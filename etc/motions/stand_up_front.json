@@ -414,7 +414,7 @@
           "duration": 0.4,
           "positions": {
             "head": {
-              "pitch": 0.8,
+              "pitch": 0.5,
               "yaw": 0.038308143615722656
             },
             "left_arm": {
