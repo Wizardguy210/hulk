@@ -14,5 +14,7 @@
         1.710730791091919
       ]
     }
-  }
+  },
+  "disable_communication_acceptor": true,
+  "player_number": "One"
 }
