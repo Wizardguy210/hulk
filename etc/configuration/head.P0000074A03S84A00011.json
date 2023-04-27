@@ -3,7 +3,7 @@
     "vision_bottom": {
       "extrinsic_rotations": [
         0.6509166955947876,
-        1.3741564750671387,
+        1.374156475067139,
         1.0
       ]
     },
@@ -14,5 +14,7 @@
         0.0
       ]
     }
-  }
+  },
+  "disable_communication_acceptor": true,
+  "player_number": "Seven"
 }
