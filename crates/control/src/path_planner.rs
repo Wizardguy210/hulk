@@ -5,7 +5,7 @@ use smallvec::SmallVec;
 
 use types::{
     Arc, Circle, FieldDimensions, LineSegment, Obstacle, Orientation, PathObstacle,
-    PathObstacleShape, PathSegment,
+    PathObstacleShape, PathSegment, RuleObstacle,
 };
 
 use crate::a_star::{a_star_search, DynamicMap};
@@ -47,6 +47,41 @@ impl PathPlanner {
             }))
         });
 
+        self.obstacles.extend(new_obstacles);
+    }
+
+    pub fn with_rule_obstacles(
+        &mut self,
+        field_to_robot: Isometry2<f32>,
+        rule_obstacles: &[RuleObstacle],
+        own_robot_radius: f32,
+    ) {
+        let new_obstacles = rule_obstacles
+            .iter()
+            .flat_map(|rule_obstacle| match rule_obstacle {
+                RuleObstacle::Rectangle(rectangle) => {
+                    let bottom_left = field_to_robot * rectangle.min;
+                    let top_right = field_to_robot * rectangle.max;
+                    let top_left = field_to_robot * point![rectangle.min.x, rectangle.max.y];
+                    let bottom_right = field_to_robot * point![rectangle.max.x, rectangle.min.y];
+                    vec![
+                        PathObstacle::from(Circle::new(bottom_left, own_robot_radius)),
+                        PathObstacle::from(Circle::new(bottom_right, own_robot_radius)),
+                        PathObstacle::from(Circle::new(top_left, own_robot_radius)),
+                        PathObstacle::from(Circle::new(top_right, own_robot_radius)),
+                        PathObstacle::from(LineSegment::new(bottom_left, bottom_right)),
+                        PathObstacle::from(LineSegment::new(bottom_right, top_right)),
+                        PathObstacle::from(LineSegment::new(top_right, top_left)),
+                        PathObstacle::from(LineSegment::new(top_left, bottom_left)),
+                    ]
+                }
+                RuleObstacle::Circle(circle) => {
+                    vec![PathObstacle::from(Circle::new(
+                        field_to_robot * circle.center,
+                        circle.radius + own_robot_radius,
+                    ))]
+                }
+            });
         self.obstacles.extend(new_obstacles);
     }
 

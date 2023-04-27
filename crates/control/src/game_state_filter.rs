@@ -236,7 +236,7 @@ impl State {
         ball_detected_far_from_kick_off_point: bool,
         config: &GameStateFilterConfiguration,
     ) -> FilteredGameState {
-        let is_in_sub_state = matches!(game_controller_state.sub_state, Some(_));
+        let is_in_sub_state = game_controller_state.sub_state.is_some();
         let opponent_is_kicking_team = matches!(
             game_controller_state.kicking_team,
             Team::Opponent | Team::Uncertain

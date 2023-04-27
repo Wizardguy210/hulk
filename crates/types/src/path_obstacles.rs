@@ -61,3 +61,14 @@ impl From<PathObstacleShape> for PathObstacle {
         }
     }
 }
+
+impl From<Circle> for PathObstacle {
+    fn from(shape: Circle) -> Self {
+        Self::from(PathObstacleShape::Circle(shape))
+    }
+}
+impl From<LineSegment> for PathObstacle {
+    fn from(shape: LineSegment) -> Self {
+        Self::from(PathObstacleShape::LineSegment(shape))
+    }
+}

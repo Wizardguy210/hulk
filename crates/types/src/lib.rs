@@ -1,4 +1,5 @@
 #![recursion_limit = "256"]
+mod action;
 mod ball;
 pub mod ball_filter;
 mod ball_position;
@@ -54,6 +55,7 @@ mod robot_dimensions;
 mod robot_kinematics;
 mod robot_masses;
 mod roles;
+mod rule_obstacles;
 pub mod samples;
 mod sensor_data;
 mod sole_pressure;
@@ -69,6 +71,7 @@ pub mod ycbcr422_image;
 
 // TODO: convert all "mod" to "pub mod"
 
+pub use action::Action;
 pub use ball::{Ball, CandidateEvaluation};
 pub use ball_position::BallPosition;
 pub use buttons::Buttons;
@@ -122,6 +125,7 @@ pub use robot_dimensions::RobotDimensions;
 pub use robot_kinematics::RobotKinematics;
 pub use robot_masses::RobotMass;
 pub use roles::Role;
+pub use rule_obstacles::RuleObstacle;
 pub use sensor_data::{
     Foot, ForceSensitiveResistors, InertialMeasurementUnitData, SensorData, SonarSensors,
     TouchSensors,
