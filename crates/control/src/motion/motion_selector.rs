@@ -76,10 +76,8 @@ fn motion_type_from_command(command: &MotionCommand) -> MotionType {
         },
         MotionCommand::Penalized => MotionType::Penalized,
         MotionCommand::SitDown { .. } => MotionType::SitDown,
-        MotionCommand::Stand {
-            is_energy_saving, ..
-        } => {
-            if *is_energy_saving {
+        MotionCommand::Stand { .. } => {
+            if false {
                 MotionType::EnergySavingStand
             } else {
                 MotionType::Stand
