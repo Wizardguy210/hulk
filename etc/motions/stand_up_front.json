@@ -209,7 +209,7 @@
           "positions": {
             "head": {
               "yaw": 0,
-              "pitch": 0.6
+              "pitch": 0.5
             },
             "left_arm": {
               "shoulder_pitch": 1.9495327744776663,
@@ -250,7 +250,7 @@
           "positions": {
             "head": {
               "yaw": 0,
-              "pitch": 0.6
+              "pitch": 0.5
             },
             "left_arm": {
               "shoulder_pitch": 2.090904443889207,
@@ -290,8 +290,8 @@
           "duration": 0.4621212121212121,
           "positions": {
             "head": {
-              "yaw": 0.6,
-              "pitch": 0.6
+              "yaw": 0.0,
+              "pitch": 0.5
             },
             "left_arm": {
               "shoulder_pitch": 2.092649773141201,
@@ -332,7 +332,7 @@
           "positions": {
             "head": {
               "yaw": 0.0,
-              "pitch": 0.672
+              "pitch": 0.5
             },
             "left_arm": {
               "shoulder_pitch": 2.0210912738094335,
@@ -373,7 +373,7 @@
           "positions": {
             "head": {
               "yaw": 0.0,
-              "pitch": 0.672
+              "pitch": 0.5
             },
             "left_arm": {
               "shoulder_pitch": 2.0210912738094335,
@@ -414,7 +414,7 @@
           "duration": 0.4,
           "positions": {
             "head": {
-              "pitch": 0.6,
+              "pitch": 0.5,
               "yaw": 0.038308143615722656
             },
             "left_arm": {
@@ -465,7 +465,7 @@
           "duration": 0.6,
           "positions": {
             "head": {
-              "pitch": 0.6489238739013672,
+              "pitch": 0.5,
               "yaw": 0.08432793617248535
             },
             "left_arm": {
@@ -507,7 +507,7 @@
           "duration": 0.2,
           "positions": {
             "head": {
-              "pitch": 0.6,
+              "pitch": 0.5,
               "yaw": 0.2469320297241211
             },
             "left_arm": {
