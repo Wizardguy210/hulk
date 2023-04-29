@@ -107,7 +107,7 @@ impl StepPlanner {
                     .rotate_vector_90_degrees(arc.start - arc.circle.center)
                     .normalize();
                 Isometry2::from_parts(
-                    (arc.start + direction * context.max_step_size.forward).into(),
+                    (arc.start + direction * 1.0).into(),
                     UnitComplex::from_cos_sin_unchecked(direction.x, direction.y),
                 )
             }
