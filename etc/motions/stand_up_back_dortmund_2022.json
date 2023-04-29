@@ -204,6 +204,7 @@
             }
           }
         },
+
         {
           "duration": 1.0,
           "positions": {
@@ -286,6 +287,7 @@
             }
           }
         },
+
         {
           "duration": 0.5,
           "positions": {
@@ -408,7 +410,14 @@
               "ankle_roll": 0.017453292519943295
             }
           }
-        },
+        }
+      ]
+    },
+    {
+      "entry_condition": {
+        "FallenAbort": {}
+      },
+      "keyframes": [
         {
           "duration": 0.5,
           "positions": {
@@ -531,7 +540,14 @@
               "ankle_roll": 0.06981317007977318
             }
           }
-        },
+        }
+      ]
+    },
+    {
+      "entry_condition": {
+        "FallenAbort": {}
+      },
+      "keyframes": [
         {
           "duration": 0.3,
           "positions": {
@@ -654,7 +670,14 @@
               "ankle_roll": -0.15707963267948966
             }
           }
-        },
+        }
+      ]
+    },
+    {
+      "entry_condition": {
+        "FallenAbort": {}
+      },
+      "keyframes": [
         {
           "duration": 1.0,
           "positions": {
@@ -736,7 +759,14 @@
               "ankle_roll": -0.08726646259971647
             }
           }
-        },
+        }
+      ]
+    },
+    {
+      "entry_condition": {
+        "FallenAbort": {}
+      },
+      "keyframes": [
         {
           "duration": 0.5,
           "positions": {

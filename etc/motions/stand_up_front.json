@@ -290,7 +290,7 @@
           "duration": 0.4621212121212121,
           "positions": {
             "head": {
-              "yaw": 0.6,
+              "yaw": 0.0,
               "pitch": 0.5
             },
             "left_arm": {
@@ -460,6 +460,9 @@
       }
     },
     {
+      "entry_condition": {
+        "FallenAbort": {}
+      },
       "keyframes": [
         {
           "duration": 0.6,
@@ -595,6 +598,9 @@
       }
     },
     {
+      "entry_condition": {
+        "FallenAbort": {}
+      },
       "keyframes": [
         {
           "duration": 1,
@@ -640,7 +646,7 @@
       ],
       "exit_condition": {
         "StabilizedCondition": {
-          "tolerance": 0.01,
+          "tolerance": 0.2,
           "timeout_duration": 5.0
         }
       }

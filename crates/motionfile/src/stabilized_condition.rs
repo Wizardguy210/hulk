@@ -1,6 +1,6 @@
 use std::{fmt::Debug, time::Duration};
 
-use crate::Condition;
+use crate::{condition::Response, Condition};
 
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use types::ConditionInput;
@@ -15,13 +15,6 @@ pub struct StabilizedCondition {
     timeout_duration: Duration,
 }
 
-impl Condition for StabilizedCondition {
-    fn is_fulfilled(&self, condition_input: &ConditionInput, time_since_start: Duration) -> bool {
-        condition_input.filtered_angular_velocity.norm() < self.tolerance
-            || time_since_start > self.timeout_duration
-    }
-}
-
 fn serialize_float_seconds<S>(duration: &Duration, serializer: S) -> Result<S::Ok, S::Error>
 where
     S: Serializer,
@@ -34,4 +27,15 @@ where
     D: Deserializer<'de>,
 {
     Ok(Duration::from_secs_f32(f32::deserialize(deserializer)?))
+}
+
+impl Condition for StabilizedCondition {
+    fn evaluate(&self, condition_input: &ConditionInput, time_since_start: Duration) -> Response {
+        if condition_input.filtered_angular_velocity.norm() < self.tolerance
+            || time_since_start > self.timeout_duration
+        {
+            return Response::Continue;
+        }
+        Response::Wait
+    }
 }
