@@ -30,5 +30,7 @@
         1.2699999809265137
       ]
     }
-  }
+  },
+  "disable_communication_acceptor": true,
+  "player_number": "Two"
 }

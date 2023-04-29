@@ -14,5 +14,7 @@
         1.5
       ]
     }
-  }
+  },
+  "disable_communication_acceptor": true,
+  "player_number": "Six"
 }

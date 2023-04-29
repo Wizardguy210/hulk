@@ -14,5 +14,7 @@
         0.5249816179275513
       ]
     }
-  }
+  },
+  "disable_communication_acceptor": true,
+  "player_number": "Five"
 }
