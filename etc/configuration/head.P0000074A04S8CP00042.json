@@ -14,5 +14,7 @@
         2.0606536865234375
       ]
     }
-  }
+  },
+  "disable_communication_acceptor": true,
+  "player_number": "Seven"
 }
