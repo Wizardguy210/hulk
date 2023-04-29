@@ -14,5 +14,7 @@
         1.244167685508728
       ]
     }
-  }
+  },
+  "disable_communication_acceptor": true,
+  "player_number": "Three"
 }
