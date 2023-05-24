@@ -41,9 +41,9 @@ pub struct CycleContext {
     pub walk_joints_command: Input<BodyJointsCommand<f32>, "walk_joints_command">,
     pub hardware_interface: HardwareInterface,
     pub leds: Input<Leds, "leds">,
-   
+
     pub motion_safe_exits: PersistentState<MotionSafeExits, "motion_safe_exits">,
-    pub motion_safe_exits_output: AdditionalOutput<MotionSafeExits, "motion_safe_exits_output">, 
+    pub motion_safe_exits_output: AdditionalOutput<MotionSafeExits, "motion_safe_exits_output">,
 }
 
 #[context]
@@ -127,7 +127,9 @@ impl JointCommandSender {
             .motion_safe_exits_output
             .fill_if_subscribed(|| context.motion_safe_exits.clone());
 
-        context.motion_safe_exits_output.fill_if_subscribed( || context.motion_safe_exits.clone() );
+        context
+            .motion_safe_exits_output
+            .fill_if_subscribed(|| context.motion_safe_exits.clone());
         Ok(MainOutputs {})
     }
 }
