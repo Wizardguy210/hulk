@@ -141,19 +141,21 @@ impl FallStateEstimation {
                     .norm()
             });
 
+        let estimated_roll = self.roll_pitch_filter.state().x;
+
+        let estimated_pitch = self.roll_pitch_filter.state().y;
+
         let falling_direction = {
-            if self.roll_pitch_filter.state().x.abs()
-                > context.fall_state_estimation.falling_angle_threshold.x
-            {
-                if self.roll_pitch_filter.state().x > 0.0 {
+            if estimated_roll.abs() > context.fall_state_estimation.falling_angle_threshold.x {
+                if estimated_roll > 0.0 {
                     Some(FallDirection::Right)
                 } else {
                     Some(FallDirection::Left)
                 }
-            } else if self.roll_pitch_filter.state().y.abs()
+            } else if estimated_pitch.abs()
                 > context.fall_state_estimation.falling_angle_threshold.y
             {
-                if self.roll_pitch_filter.state().y > 0.0 {
+                if estimated_pitch > 0.0 {
                     Some(FallDirection::Forward)
                 } else {
                     Some(FallDirection::Backward)

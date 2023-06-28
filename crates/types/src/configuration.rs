@@ -468,8 +468,8 @@ pub struct FallStateEstimation {
     pub angular_velocity_low_pass_factor: f32,
     pub roll_pitch_low_pass_factor: f32,
     pub gravitational_acceleration_threshold: f32,
-    pub falling_angle_threshold: Vector2<f32>,
     pub fallen_timeout: Duration,
+    pub falling_angle_threshold: Vector2<f32>,
 }
 
 #[derive(Clone, Debug, Default, Deserialize, Serialize, SerializeHierarchy)]
@@ -487,10 +487,14 @@ pub struct CameraMatrixParameters {
 
 #[derive(Clone, Debug, Default, Deserialize, Serialize, SerializeHierarchy)]
 pub struct FallProtection {
+    pub ground_impact_angular_threshold: f32,
     pub ground_impact_head_stiffness: f32,
-    pub arm_stiffness: f32,
+    pub ground_impact_body_stiffness: f32,
+    pub time_free_motion_exit: Duration,
+    pub time_prolong_ground_impact: Duration,
     pub left_arm_positions: ArmJoints<f32>,
     pub right_arm_positions: ArmJoints<f32>,
+    pub arm_stiffness: f32,
     pub leg_stiffness: f32,
 }
 
