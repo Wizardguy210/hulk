@@ -23,6 +23,7 @@ pub struct RoleAssignment {
     role: Role,
     role_initialized: bool,
     team_ball: Option<BallPosition>,
+    last_time_keeper_penalized: Option<SystemTime>,
 }
 
 #[context]
@@ -45,6 +46,8 @@ pub struct CycleContext {
 
     pub field_dimensions: Parameter<FieldDimensions, "field_dimensions">,
     pub forced_role: Parameter<Option<Role>, "role_assignment.forced_role?">,
+    pub keeper_replacementkeeper_switch_time:
+        Parameter<Duration, "role_assignment.keeper_replacementkeeper_switch_time">,
     pub initial_poses: Parameter<Players<InitialPose>, "localization.initial_poses">,
     pub optional_roles: Parameter<Vec<Role>, "behavior.optional_roles">,
     pub player_number: Parameter<PlayerNumber, "player_number">,
@@ -70,6 +73,7 @@ impl RoleAssignment {
             role: Role::Striker,
             role_initialized: false,
             team_ball: None,
+            last_time_keeper_penalized: None,
         })
     }
 
@@ -256,6 +260,19 @@ impl RoleAssignment {
             }
         }
 
+        if let Some(last_time_keeper_penalized) = self.last_time_keeper_penalized {
+            let deny_replacement_keeper_switch = cycle_start_time
+                .duration_since(last_time_keeper_penalized)
+                .expect("Keeper was penalized in the Future")
+                < *context.keeper_replacementkeeper_switch_time;
+            if self.role == Role::ReplacementKeeper
+                && !send_spl_striker_message
+                && deny_replacement_keeper_switch
+            {
+                role = Role::ReplacementKeeper;
+            }
+        }
+
         if send_spl_striker_message
             && primary_state == PrimaryState::Playing
             && silence_interval_has_passed
@@ -296,6 +313,12 @@ impl RoleAssignment {
             self.role = role;
         }
         self.team_ball = team_ball;
+
+        if let Some(game_controller_state) = context.game_controller_state {
+            if game_controller_state.penalties.one.is_some() {
+                self.last_time_keeper_penalized = Some(cycle_start_time);
+            }
+        }
 
         Ok(MainOutputs {
             role: self.role.into(),
