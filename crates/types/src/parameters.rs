@@ -232,14 +232,18 @@ pub struct WalkingEngine {
     pub max_number_of_unstable_steps: usize,
     pub max_step_adjustment: f32,
     pub maximal_step_duration: Duration,
+    pub forward_step_midpoint: f32,
+    pub left_step_midpoint: f32,
     pub minimal_step_duration: Duration,
     pub number_of_stabilizing_steps: usize,
     pub stabilization_foot_lift_multiplier: f32,
     pub stabilization_foot_lift_offset: f32,
+    pub stabilization_hysteresis: f32,
     pub stable_step_deviation: Duration,
     pub starting_step_duration: Duration,
     pub starting_step_foot_lift: f32,
     pub step_duration_increase: Step,
+    pub step_foot_lift_increase: Step,
     pub swing_foot_imu_leveling_factor: f32,
     pub swing_foot_pitch_error_leveling_factor: f32,
     pub swinging_arms: SwingingArms,
@@ -247,7 +251,6 @@ pub struct WalkingEngine {
     pub torso_shift_offset: f32,
     pub torso_tilt_offset: f32,
     pub walk_hip_height: f32,
-    pub step_foot_lift_increase: Step,
 }
 
 #[derive(Clone, Debug, Default, Deserialize, Serialize, SerializeHierarchy)]
@@ -479,7 +482,8 @@ pub struct FallStateEstimation {
     pub roll_pitch_low_pass_factor: f32,
     pub gravitational_acceleration_threshold: f32,
     pub fallen_timeout: Duration,
-    pub falling_angle_threshold: Vector2<f32>,
+    pub falling_angle_threshold_left: Vector2<f32>,
+    pub falling_angle_threshold_forward: Vector2<f32>,
 }
 
 #[derive(Clone, Debug, Default, Deserialize, Serialize, SerializeHierarchy)]

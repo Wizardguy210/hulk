@@ -426,8 +426,8 @@
     "additional_kick_foot_lift": 0.01,
     "arm_stiffness": 0.8,
     "backward_foot_support_offset": -0.012,
-    "base_foot_lift": 0.0085,
-    "base_step_duration": { "nanos": 220000000, "secs": 0 },
+    "base_foot_lift": 0.012,
+    "base_step_duration": { "nanos": 250000000, "secs": 0 },
     "emergency_foot_lift": 0.03,
     "emergency_step": { "forward": 0.0, "left": 0.1, "turn": 0.0 },
     "emergency_step_duration": { "nanos": 250000000, "secs": 0 },
@@ -446,7 +446,7 @@
     "inside_turn_ratio": 0.05,
     "leg_stiffness_stand": 0.6,
     "leg_stiffness_walk": 1.0,
-    "max_forward_acceleration": 0.015,
+    "max_forward_acceleration": 0.009,
     "max_leg_adjustment_velocity": {
       "hip_yaw_pitch": 0.0,
       "hip_roll": 0.1,
@@ -459,15 +459,18 @@
     "max_number_of_unstable_steps": 3,
     "max_step_adjustment": 0.0018,
     "maximal_step_duration": { "nanos": 0, "secs": 1 },
+    "forward_step_midpoint": 0.5,
+    "left_step_midpoint": 0.7,
     "minimal_step_duration": { "nanos": 150000000, "secs": 0 },
     "number_of_stabilizing_steps": 3,
     "stabilization_foot_lift_multiplier": 1.0,
     "stabilization_foot_lift_offset": 0.02,
+    "stabilization_hysteresis": 0.001,
     "stable_step_deviation": { "nanos": 60000000, "secs": 0 },
     "starting_step_duration": { "nanos": 200000000, "secs": 0 },
     "starting_step_foot_lift": 0.009,
-    "step_duration_increase": { "forward": 0.2, "left": 0.7, "turn": 0.1 },
-    "step_foot_lift_increase": { "forward": 0.02, "left": 0.12, "turn": 0.0 },
+    "step_duration_increase": { "forward": 0.0, "left": 1.2, "turn": 0.1 },
+    "step_foot_lift_increase": { "forward": 0.0, "left": 0.15, "turn": 0.0 },
     "swing_foot_imu_leveling_factor": 1.0,
     "swing_foot_pitch_error_leveling_factor": 0.9,
     "swinging_arms": {
@@ -642,7 +645,7 @@
     "hypothesis_score_base_increase": 0.1
   },
   "odometry": {
-    "odometry_scale_factor": [1.1, 1.0]
+    "odometry_scale_factor": [1.27, 0.8]
   },
   "orientation_filter": {
     "acceleration_threshold": 0.2,
@@ -657,7 +660,8 @@
     "angular_velocity_low_pass_factor": 0.2,
     "roll_pitch_low_pass_factor": 0.2,
     "gravitational_acceleration_threshold": 4.0,
-    "falling_angle_threshold": [0.52, 0.6],
+    "falling_angle_threshold_left": [-0.52, 0.52],
+    "falling_angle_threshold_forward": [-0.45, 0.6],
     "fallen_timeout": {
       "nanos": 0,
       "secs": 1
