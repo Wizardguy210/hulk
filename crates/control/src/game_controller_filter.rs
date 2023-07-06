@@ -64,6 +64,8 @@ impl GameControllerFilter {
                     .hulks_team
                     .remaining_amount_of_messages,
                 sub_state: game_controller_state_message.sub_state,
+                hulks_team_is_home_after_coin_toss: game_controller_state_message
+                    .hulks_team_is_home_after_coin_toss,
             });
         }
         Ok(MainOutputs {
