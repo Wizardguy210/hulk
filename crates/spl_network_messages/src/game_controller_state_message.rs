@@ -42,6 +42,7 @@ pub struct GameControllerStateMessage {
     pub hulks_team: TeamState,
     pub opponent_team: TeamState,
     pub kicking_team: Team,
+    pub hulks_team_is_home_after_coin_toss: bool,
 }
 
 impl TryFrom<&[u8]> for GameControllerStateMessage {
@@ -191,6 +192,7 @@ impl TryFrom<RoboCupGameControlData> for GameControllerStateMessage {
                 players: opponent_players,
             },
             kicking_team: Team::try_from(message.kickingTeam)?,
+            hulks_team_is_home_after_coin_toss: hulks_team_index == 0,
         })
     }
 }
@@ -319,7 +321,7 @@ pub enum SubState {
     PenaltyKick,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize, SerializeHierarchy)]
+#[derive(Clone, Copy, Debug, Deserialize, Eq, PartialEq, Serialize, SerializeHierarchy)]
 pub enum Half {
     First,
     Second,

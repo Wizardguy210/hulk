@@ -15,4 +15,5 @@ pub struct GameControllerState {
     pub penalties: Players<Option<Penalty>>,
     pub remaining_amount_of_messages: u16,
     pub sub_state: Option<SubState>,
+    pub hulks_team_is_home_after_coin_toss: bool,
 }
