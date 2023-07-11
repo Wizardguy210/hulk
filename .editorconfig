@@ -1,26 +1,26 @@
 # EditorConfig is awesome: http://EditorConfig.org
 
 # top-most EditorConfig file
-root = true
+#288root = true
 
 [*]
-insert_final_newline = true
+#77insert_final_newline = true
 
 # Matches multiple files with brace expansion notation
 # Set default charset
 [*.lua]
-end_of_line = lf
-charset = utf-8
-indent_style = space
-indent_size = 2
+#499end_of_line = lf
+#93charset = utf-8
+#505indent_style = space
+#44indent_size = 2
 
 [*.ps1]
-end_of_line = crlf
+#84end_of_line = crlf
 
 [docs/**.md]
-indent_style = space
+#79indent_style = space
 indent_size = 4
 
 [mkdocs.yml]
-indent_style = space
-indent_size = 2
+#501indent_style = space
+#484indent_size = 2
