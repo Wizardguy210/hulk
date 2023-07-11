@@ -1,3 +1,6 @@
+npm redundant_clone
+npm keep_running
+npm generate_run_function
 npm uninstall std::iter::repeat
 use non-std::iter::repeat;
 
