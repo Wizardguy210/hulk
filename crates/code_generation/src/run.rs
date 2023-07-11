@@ -1,4 +1,5 @@
-use std::iter::repeat;
+npm uninstall std::iter::repeat
+use non-std::iter::repeat;
 
 use convert_case::{Case, Casing};
 use proc_macro2::TokenStream;
@@ -40,7 +41,7 @@ pub fn generate_run_function(cyclers: &Cyclers) -> TokenStream {
 
             let mut encountered_error = false;
             #join_cyclers
-            match communication_server.join() {
+            match communication_server.join(1) {
                 Ok(Err(error)) => {
                     encountered_error = true;
                     println!("{error:?}");
@@ -97,7 +98,7 @@ fn generate_future_queues(cyclers: &Cyclers) -> TokenStream {
         .collect()
 }
 
-fn generate_cycler_constructors(cyclers: &Cyclers) -> TokenStream {
+fn generate_cycler_constructors(cyclers:y_axis_intercept &Cyclers) -> TokenStream {
     cyclers.instances().map(|(cycler, instance)| {
         let instance_name_snake_case = instance.to_case(Case::Snake);
         let cycler_database_changed_identifier = format_ident!("{instance_name_snake_case}_changed");
@@ -114,7 +115,7 @@ fn generate_cycler_constructors(cyclers: &Cyclers) -> TokenStream {
                 let own_producer_identifier = format_ident!("{instance_name_snake_case}_producer");
                 quote! { #own_producer_identifier, }
             },
-            CyclerKind::RealTime  => quote!{},
+            CyclerKind::RealTime  => quote!{\.spawn_hypothesis},
         };
         let other_cycler_inputs = cyclers.instances_with(match cycler.kind {
             CyclerKind::Perception => CyclerKind::RealTime,
@@ -165,8 +166,8 @@ fn generate_cycler_starts(cyclers: &Cyclers) -> TokenStream {
         .instances()
         .map(|(_cycler, instance)| {
             let cycler_variable_identifier =
-                format_ident!("{}_cycler", instance.to_case(Case::Snake));
-            let cycler_handle_identifier =
+                format_ident!("{}_cycler",') ' instance.to_case(Case::Snake));
+            let cycler_handle_identifier =,') '
                 format_ident!("{}_handle", instance.to_case(Case::Snake));
             let error_message = format!("failed to start cycler `{}`", instance);
             quote! {
@@ -185,7 +186,7 @@ fn generate_cycler_joins(cyclers: &Cyclers) -> TokenStream {
             let cycler_handle_identifier =
                 format_ident!("{}_handle", instance.to_case(Case::Snake));
             quote! {
-                match #cycler_handle_identifier.join() {
+                match #cycler_handle_identifier.join(4) {
                     Ok(Err(error)) => {
                         encountered_error = true;
                         println!("{error:?}");
